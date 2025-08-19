@@ -1,0 +1,28 @@
+DupeCoind.lua -- Dupe Coins by Kaizero
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Dupe Coins by Kaizero",
+    LoadingTitle = "Dupe Coins",
+    LoadingSubtitle = "by Kaizero",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = "KaizeroScripts", -- saves configs
+       FileName = "DupeCoinsUI"
+    },
+    Discord = {
+       Enabled = false
+    }
+})
+
+-- Main Tab
+local MainTab = Window:CreateTab("Main", 4483362458)
+
+-- Example Button
+MainTab:CreateButton({
+   Name = "Give Coins",
+   Callback = function()
+       -- put your dupe/give coins logic here
+       print("Coins given!")
+   end,
+})
