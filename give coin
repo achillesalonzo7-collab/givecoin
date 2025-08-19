@@ -1,0 +1,38 @@
+GiveCoins.lua-- Roblox GiveCoins Script (all in one)
+
+-- SERVER PART (put in ServerScriptService if splitting manually)
+game.Players.PlayerAdded:Connect(function(player)
+    local leaderstats = Instance.new("Folder")
+    leaderstats.Name = "leaderstats"
+    leaderstats.Parent = player
+
+    local coins = Instance.new("IntValue")
+    coins.Name = "Coins"
+    coins.Value = 0
+    coins.Parent = leaderstats
+end)
+
+-- LOCAL PART (runs on player, creates button UI)
+local player = game.Players.LocalPlayer or nil
+if player then
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "CoinsUI"
+    screenGui.Parent = player:WaitForChild("PlayerGui")
+
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 200, 0, 50)
+    button.Position = UDim2.new(0.5, -100, 0.5, -25)
+    button.Text = "Give Coins"
+    button.Parent = screenGui
+
+    button.MouseButton1Click:Connect(function()
+        local leaderstats = player:FindFirstChild("leaderstats")
+        if leaderstats then
+            local coins = leaderstats:FindFirstChild("Coins")
+            if coins then
+                coins.Value = coins.Value + 100
+                print("Coins given! New balance: " .. coins.Value)
+            end
+        end
+    end)
+end
